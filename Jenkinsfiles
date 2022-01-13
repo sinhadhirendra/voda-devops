@@ -1,0 +1,12 @@
+node
+{
+    stage ('SCM Checkout')
+    {
+      git 'https://github.com/sinhadhirendra/voda-devops'
+    }
+    stage ('Compile-Package')
+    {
+      def MVN_HOME=tool name: 'maven-3', type: 'maven'
+      sh "${MVN_HOME}/bin/mvn package"
+    }
+}
